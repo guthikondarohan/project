@@ -1,13 +1,10 @@
-import React from 'react';
-import NotificationInbox from './NotificationInbox';
+const express = require('express');
+const bodyParser = require('body-parser');
+const notificationRoutes = require('./routes/notifications');
 
-const App = () => {
-  return (
-    <div>
-      <h1>My Application</h1>
-      <NotificationInbox />
-    </div>
-  );
-};
+const app = express();
 
-export default App;
+app.use(bodyParser.json());
+app.use('/api/notifications', notificationRoutes);
+
+module.exports = app;
